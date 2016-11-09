@@ -12,7 +12,7 @@ parser.add_argument('-c','--crit', type=int, action='store', help="critical leve
 args = parser.parse_args()
 
 headers = {'Authorization': 'Bearer '+args.token}
-params={'fieldSelector': 'spec.host='+args.node}
+params={'fieldSelector': 'spec.host='+args.node+',status.phase=Running'}
 
 try:
 	req = requests.get(args.url+"/api/v1/pods", verify=False, headers=headers, params=params)
